@@ -1,0 +1,66 @@
+My first approach to this problem was to first identify the various kinds of hashing algorithms that were being used. This can be easily identified by simply
+looking at the length of the hash. After some analysis I ended up with the following conclusions: 
+
+user 6 SHA256
+user 5 MD5
+user 4 SHA1
+user 3 SHA512 + cipher
+user 2 SHA384
+user 1 SHA256
+
+Given that the number of hashes was so small I thought it reasonable to make a seperate function for each hash and tune my approach to each. With a naive guess for
+user1 I assumed they user SHA256 and nothing else I did a basic dictionary attack in SHA256 and got the password immediately. I did the same thing for user 2
+but in SHA 384 and got it immediately again. User 3 was a cipher so it took a bit longer to create (more like find) an appropriate caesar cipher but after implementing
+I again found it almost immediately. For user 4 I again assumed it was just hashed in SHA1 brute forced the hash and got nothing. Then I assumed it was salted, made a
+quick salt function and tried again. It took 3 minutes and returned nothing. Then given the information provided I concluded it must be in l337. So I made a l337 function,
+messed up twice because I forgot how to speak l337 (forgot i = 1 not l = 1) and then got it very quickly again. Then I came to the conclusion either user 5 or 5 must be
+salted to I tried a regular hash on both with their respective hashes. I got 6 immediately so then I salted 5, spent a good 3 minutes waiting and found it. Overall
+running all the functions linearly it took about 3 minutes to find them on my machine, little less than an hour in real time.
+
+Everything below this line is notes and links used.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+user 7 is task 2
+
+my task is to decrypt 7 diff hashes i can take my time on each
+
+https://docs.python.org/3/library/hashlib.html
+https://security.stackexchange.com/questions/91929/how-to-identify-hashes
+https://stackoverflow.com/questions/2089428/is-it-possible-to-identify-a-hash-type
+
+user 1 SHA256 - wolverine
+found it, from the above stackoverflow post it looked like it would be SHA 256
+so I bashed all the passwords and got it
+< 1 sec
+
+user 2 SHA512 - qwerty77
+either sha 512 or 384 definitely not 256 cause its longer
+ok im dumb it was 384
+cracked it the regular way found it
+< 1 sec
+
+https://stackoverflow.com/a/8895517
+this is such a nice caesar cipher algorithm cmon
+
+user 3 SHA 512 - cinnamon
+if the last one was 384 this one must be 512
+caesar ciphered each password was pretty easy
+< 1 sec
+
+https://stackoverflow.com/a/10493539
+leet speak
+
+user 4 sha-1 - rousseau
+significantly shorter must be sha-1
+didnt work with default list - must be the one with a salt or leetspeak
+NOT SALTED
+< 1 second for vanilla
+3 minutes for salted  # this one taking a really long time
+< 1 second for l337
+
+https://pypi.org/project/hashID/
+user 6 - sha 224 - whiskers
+
+user 5 - md5 - grenoble
+its md5 cause its somehow worse than sha-1
+I did 6 first so user 5 must be salted
+4 minutes with substitution cipher

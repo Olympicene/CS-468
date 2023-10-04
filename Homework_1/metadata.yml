@@ -1,0 +1,12 @@
+---
+:id: 193683114
+:submitters:
+- :name: Kevin Cordero
+  :email: kcord2@uic.edu
+:created_at: !ruby/object:ActiveSupport::TimeWithZone
+  utc: 2023-09-16 06:27:26.020229000 Z
+  zone: !ruby/object:ActiveSupport::TimeZone
+    name: America/Los_Angeles
+  time: 2023-09-15 23:27:26.020229000 Z
+:status: processed
+:score: 25.0

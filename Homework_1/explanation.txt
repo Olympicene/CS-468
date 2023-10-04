@@ -1,0 +1,14 @@
+https://stackoverflow.com/questions/40712769/return-how-many-times-each-letter-of-the-alphabet-appears-in-a-string
+
+first attempt i will find out which is the most common letter
+
+I slowly went through each letter finding out which old letter corresponded to the new one. First I found i, then a, then finished
+some words that had common endings with said vowels. As I continued I gradually increased the amount of letters that I knew and I
+replaced the most common word dictionary with the one that solved the encryption. The process was tedious and in all took me about and hour
+and a half in order to finish it all.
+
+https://stackoverflow.com/a/15448887
+https://www.geeksforgeeks.org/python-convert-a-list-of-tuples-into-dictionary/
+
+In order to find the user7 password I put the decryption key in reverse and tried with SHA224. I did not realize it is the SHA-3 version until much later.
+Took less than a second to run.

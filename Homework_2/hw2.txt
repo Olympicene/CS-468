@@ -1,0 +1,21 @@
+1. 282
+2. d8:96:95:01:a5:c9
+3. no cookie value, Response 204 No Content
+4. www.map.wisc.edu, ?? there were 2 .edu requests
+5. billiard
+6. done
+7. cs155@dummymail.com
+8. whitehat
+9. 5 messages (2277 octets)
+10. done
+
+11. tcpdump -n -r trace1.pcap src host 131.253.40.84
+12. tcpdump -n -r trace1.pcap dst port 80
+13. tcpdump -n -r trace1.pcap arp
+14. tcpdump -n -r trace1.pcap dst port 443
+
+15. 22, 25, 80, 443
+16. nmap -sU
+17. Linux 2.6.32
+
+
