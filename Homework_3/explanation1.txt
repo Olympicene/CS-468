@@ -1,0 +1,27 @@
+dnsinject.py is designed to intercept and modify a DNS query
+packet in order to inject a false DNS response to clients on 
+a network. This mainly accomplished using the Scapy library. 
+
+It starts by monitering network traffic on a specified network 
+interface. After confirming it is a properly formed DNS query
+it further filters out all non-DNS queries. After identifying 
+DNS queries it begins to take all src/dest info from each 
+layer to eventually assemble a response packet. Before assembling
+the false DNS response, it checks a dictionary loaded with a 
+prespecified hostname file to see if there are any hostnames 
+who's return IP address needs to be specified. It assembles this 
+packet and sends it off to the default interface. 
+
+I tested this program by using dig and nslookup on the three
+domains specified in the hostnames in a virtual machine. Although
+my code did not win the race condition every time, I found it 
+reasonable enough to call a success. 
+
+https://scapy.readthedocs.io/en/latest/
+https://github.com/secdev/scapy
+https://docs.python.org/3/library/argparse.html
+https://pypi.org/project/netifaces/
+https://stackoverflow.com/questions/73722298/what-is-the-difference-between-these-sending-methods-in-python-scapy
+https://stackoverflow.com/questions/36215201/python-scapy-sniff-without-root
+https://stackoverflow.com/questions/58805814/send-dns-request-with-socket-in-python
+https://stackoverflow.com/questions/29190088/scapy-failing-to-import-ip-not-defined
