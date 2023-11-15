@@ -10,3 +10,8 @@ https://regex101.com/r/H2yIy9/1
 https://stackoverflow.com/questions/17280534/prettyprint-to-a-file
 https://www.geeksforgeeks.org/append-to-json-file-using-python/#
 https://stackoverflow.com/questions/31058055/how-do-i-convert-a-python-3-byte-string-variable-into-a-regular-string
+https://www.w3schools.com/howto/howto_css_login_form.asp
+https://www.geeksforgeeks.org/python-convert-string-to-bytes/#
+https://support.bluesnap.com/docs/test-credit-card-numbers
+https://docs.python.org/3/library/http.client.html
+https://docs.python.org/3/library/urllib.parse.html
