@@ -7,3 +7,5 @@ https://stackoverflow.com/questions/4087468/ssn-regex-for-123-45-6789-or-xxx-xx-
 https://stackoverflow.com/questions/123559/how-to-validate-phone-numbers-using-regex
 https://stackoverflow.com/questions/35231285/python-how-to-split-a-string-by-non-alpha-characters
 https://regex101.com/r/H2yIy9/1
+https://stackoverflow.com/questions/17280534/prettyprint-to-a-file
+https://www.geeksforgeeks.org/append-to-json-file-using-python/#
