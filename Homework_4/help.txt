@@ -9,3 +9,4 @@ https://stackoverflow.com/questions/35231285/python-how-to-split-a-string-by-non
 https://regex101.com/r/H2yIy9/1
 https://stackoverflow.com/questions/17280534/prettyprint-to-a-file
 https://www.geeksforgeeks.org/append-to-json-file-using-python/#
+https://stackoverflow.com/questions/31058055/how-do-i-convert-a-python-3-byte-string-variable-into-a-regular-string
