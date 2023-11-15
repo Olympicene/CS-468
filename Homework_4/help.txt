@@ -1,0 +1,9 @@
+https://stackoverflow.com/a/39091087
+https://stackoverflow.com/a/72265386
+https://stackoverflow.com/a/5955949
+https://docs.python.org/3/library/urllib.parse.html
+https://regexpattern.com/credit-card-number/
+https://stackoverflow.com/questions/4087468/ssn-regex-for-123-45-6789-or-xxx-xx-xxxx
+https://stackoverflow.com/questions/123559/how-to-validate-phone-numbers-using-regex
+https://stackoverflow.com/questions/35231285/python-how-to-split-a-string-by-non-alpha-characters
+https://regex101.com/r/H2yIy9/1
