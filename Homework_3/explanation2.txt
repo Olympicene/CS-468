@@ -1,0 +1,21 @@
+dnsinject.py is designed to intercept DNS query packets in 
+order to detect and determine false DNS responses to clients on 
+a network. This mainly accomplished using the Scapy library. 
+
+It starts my monitoring network data on a certain interface, or 
+taking a pcappng file in order to analyze. Going through each packet
+it receives, it checks if its a legitimate DNS response packet then
+adds it to a dns response dictionary. This dictionary uses TXIDs in 
+order to store response packets. If the program detects a duplicate,
+it then checks if the duplicate response has similar src/dest IPs,
+TXIDs and rcodes and rdata. If the rdata or rcode is found to be different
+we can be fairly certain that this is a malicous DNS response injection
+we then add it to our attack log.
+
+https://scapy.readthedocs.io/en/latest/
+https://github.com/secdev/scapy
+https://docs.python.org/3/library/argparse.html
+https://pypi.org/project/netifaces/
+https://www.geeksforgeeks.org/writing-to-file-in-python/
+https://www.usenix.org/system/files/sec21fall-tolley.pdf
+https://www.endpointdev.com/blog/2015/04/raw-packet-manipulation-with-scapy/

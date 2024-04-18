@@ -1,0 +1,15 @@
+November 04 2023 15:56:52
+TXID 23641 Request foo.example.com
+Answer1 DNE
+Answer1 10.6.6.6
+
+November 04 2023 15:56:52
+TXID 64570 Request bar.example.com
+Answer1 10.6.6.7
+Answer1 DNE
+
+November 04 2023 15:56:52
+TXID 42082 Request www.cs.uic.edu
+Answer1 131.193.32.29
+Answer1 10.6.6.8
+

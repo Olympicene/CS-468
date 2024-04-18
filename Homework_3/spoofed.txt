@@ -1,0 +1,8 @@
+In the on-path injection attack that we have doing in this homework the DNS responses
+extremely similar to legitimate responses. The TXID, QR bit and source/dest IP 
+address are copied perfectly and it is virtually impossible to tell it from a
+legitimate DNS response. The only reliable way I found to detect poisoning attempts
+was to compile a list of dns responses with the same TXID and see if they match.
+I would check the aforementioned parameters and see if their response differed.
+If they did, for example, have a no name then a real IP with the same TXID
+I would know that a response was forged. This was my implementation.

